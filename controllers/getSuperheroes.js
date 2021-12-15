@@ -4,7 +4,7 @@ let superHeroes = [
     {name: 'Super Man', power: 'Web-slinging'},
      {name: 'Bat Man', power: 'Technology'},
      {name: 'Aqua Man', power: 'Breath-holding'},
-     {name: 'Thor', power: "Flying-ish"}
+     {name: 'Thor', power: "Flying-ish"},
     ] 
 
 
@@ -18,7 +18,7 @@ let superHeroes = [
    
     let getHero = (req, res) => {
         let superHero = {}
-        console.log(req.params)
+        // console.log(req.params)
         for (let key in superHeroes){
             if(superHeroes[key].name === req.params.name){
                 superHero = superHeroes[key]
@@ -37,7 +37,7 @@ let superHeroes = [
         for (let key in superHeroes){
             if(superHeroes[key].name === req.body.name)
             superHeroes.splice(key, 1, req.body)
-            console.log(superHeroes[key].name)
+            // console.log(superHeroes[key].name)
         }
         res.status(200).json(superHeroes)
     }
