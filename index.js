@@ -22,7 +22,7 @@ app.get(`/api/superheroes/:name`, getHero);
 
 app.post(`/api/superheroes`, addHero);
 
-app.put(`/api/superheroes`, editHero);
+app.put(`/api/superheroes/:id`, editHero);
 
 app.delete(`/api/superheroes/:name`, deleteHero);
 

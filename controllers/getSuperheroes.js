@@ -3,14 +3,15 @@ let count = superHeroes.length + 1;
 
 
 let getSuperheroes = (req, res) => {
-    let responseHeroes = superHeroes;
-    res.status(200).json(responseHeroes);
+    res.status(200).json(superHeroes);
 }
 
 let getHero = (req, res) => {
     let superHero = {}
+    const {name} = req.params;
+
     for (let key in superHeroes) {
-        if (superHeroes[key].name.toLowerCase() === req.params.name.toLowerCase()) {
+        if (superHeroes[key].name.toLowerCase() === name.toLowerCase()) {
             superHero = superHeroes[key];
         } 
     }
@@ -18,25 +19,40 @@ let getHero = (req, res) => {
 }
 
 let addHero = (req, res) => {
-    superHeroes.push(req.body);
+    const hero = req.body;
+    superHeroes.push(hero);
     req.body.id = count;
     count++;
     res.status(200).json(superHeroes);
 }
 
+// let editHero = (req, res) => {
+//     let newHero = req.body;
+//     for (let key in superHeroes){
+//     if (superHeroes[key].id === req.body.id) {
+//         superHeroes.splice(key, 1, newHero);
+//     }
+// }
+// res.status(200).json(superHeroes);
+// }
+
+// This way was so much cleaner!
 let editHero = (req, res) => {
-    let newHero = req.body;
-    for (let key in superHeroes){
-    if (superHeroes[key].id === req.body.id) {
-        superHeroes.splice(key, 1, newHero);
-    }
-}
-res.status(200).json(superHeroes);
+    const {id} = req.params;
+    const {name, power} = req.body;
+    // finds the index of the hero of that id
+    const index = superHeroes.findIndex(hero => hero.id == id); 
+    //edits the name and power of the hero at that index of that id
+    superHeroes[index].name = name;
+    superHeroes[index].power = power;
+    res.status(200).json(superHeroes);
+
 }
 
 let deleteHero = (req, res) => {
+    const {name} = req.params;
     for (let key in superHeroes) {
-        if (superHeroes[key].name.toLowerCase() === req.params.name.toLowerCase()){
+        if (superHeroes[key].name.toLowerCase() === name.toLowerCase()){
             superHeroes.splice(key, 1);
         } 
     }

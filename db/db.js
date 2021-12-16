@@ -21,6 +21,7 @@ let superHeroes = [
         id: 4,
     },
 ]
+
 module.exports = {
     superHeroes,
 }
