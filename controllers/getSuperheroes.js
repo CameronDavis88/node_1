@@ -36,7 +36,7 @@ let addHero = (req, res) => {
 // res.status(200).json(superHeroes);
 // }
 
-// This way was so much cleaner!
+// much better than how I did it above!
 let editHero = (req, res) => {
     const {id} = req.params;
     const {name, power} = req.body;
@@ -49,13 +49,21 @@ let editHero = (req, res) => {
 
 }
 
+// let deleteHero = (req, res) => {
+//     const {name} = req.params;
+//     for (let key in superHeroes) {
+//         if (superHeroes[key].name.toLowerCase() === name.toLowerCase()){
+//             superHeroes.splice(key, 1);
+//         } 
+//     }
+//     res.status(200).json(superHeroes);
+// }
+
+// much better than how I did it above!
 let deleteHero = (req, res) => {
-    const {name} = req.params;
-    for (let key in superHeroes) {
-        if (superHeroes[key].name.toLowerCase() === name.toLowerCase()){
-            superHeroes.splice(key, 1);
-        } 
-    }
+    const {id} = req.params;
+    const index = superHeroes.findIndex(hero => hero.id == id); 
+    superHeroes.splice(index, 1)
     res.status(200).json(superHeroes);
 }
 

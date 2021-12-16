@@ -24,7 +24,7 @@ app.post(`/api/superheroes`, addHero);
 
 app.put(`/api/superheroes/:id`, editHero);
 
-app.delete(`/api/superheroes/:name`, deleteHero);
+app.delete(`/api/superheroes/:id`, deleteHero);
 
 
 
