@@ -1,29 +1,23 @@
 // this is the old way of importing that has to be used when using Node in th backend
 const express = require('express');
+const port = 3333;
 const {
     getSuperheroes,
     getHero,
     addHero,
     editHero,
     deleteHero,
-} = require('./controllers/getSuperheroes')
-const port = 3333
+} = require('./controllers/getSuperheroes');
 
 // basically this is your server now, makes an express app
 const app = express();
 
-
-
 //allows us to access the body of the requests that are sent in
 app.use(express.json());
-
-
 
 //endpoints:
 app.get(`/api/superheroes`, getSuperheroes);
 
-
-// check out on :  http://localhost:3333/api/superheroes/Thanos
 app.get(`/api/superheroes/:name`, getHero);
 
 app.post(`/api/superheroes`, addHero);

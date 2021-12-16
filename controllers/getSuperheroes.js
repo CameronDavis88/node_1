@@ -5,14 +5,13 @@ let count = superHeroes.length + 1;
 let getSuperheroes = (req, res) => {
     let responseHeroes = superHeroes;
     res.status(200).json(responseHeroes);
-    console.log(count)
 }
 
 let getHero = (req, res) => {
     let superHero = {}
     for (let key in superHeroes) {
         if (superHeroes[key].name.toLowerCase() === req.params.name.toLowerCase()) {
-            superHero = superHeroes[key]
+            superHero = superHeroes[key];
         } 
     }
     res.status(200, console.log('200')).json(superHero);
@@ -21,7 +20,7 @@ let getHero = (req, res) => {
 let addHero = (req, res) => {
     superHeroes.push(req.body);
     req.body.id = count;
-    count++
+    count++;
     res.status(200).json(superHeroes);
 }
 
